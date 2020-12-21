@@ -1,6 +1,6 @@
-# Yandeh - Projeto Engenharia de dados
+# Yandeh - Projeto Engenharia de Dados
 
-Projeto de Engenharia com o intuito de realizar a modelagem e ingestão dos dados enviados utilizando PySpark, MySQL e Docker
+Projeto de Engenharia com o intuito de realizar a modelagem e ingestão dos dados enviados utilizando PySpark, MySQL e Docker.
 
 ## Modelagem
 
@@ -62,20 +62,23 @@ espec_Componente
  |-- orientatacao: bit 
  |-- peso: float 
 ```
-Foi utilizado MySQL como Banco de Dados
-Modelagem e relacionamentos estão descritos no arquivo "Modelagem_DB.png" dentro do repositório
+
+Foi utilizado MySQL como Banco de Dados.
+Modelagem e relacionamentos estão descritos no arquivo "Modelagem_DB.png" dentro do repositório.
  
-### Arquitetura
+## Arquitetura
 
 Foi utilizado Pyspark junto com Pandas para realizar a leitura e transformação dos dados, com o Pandas servindo apenas como forma de melhor
-visualização dos dados e o PySpark realizanndo as transformações necessárias e Docker no momento de conteinerização do BD
+visualização dos dados e o PySpark realizando as transformações necessárias e Docker no momento de conteinerização do BD.
 
-Transformações realizadas: 
+### Transformações realizadas: 
+
 Transformar os dados para seus tipos corretos.
 Substituir valores "NA" por Nulos
 Em campos que aceitavam como resposta "Sim" e "Não", realizei a transformações dos mesmos em Bit (0 == Não, 1 == Sim).
+Em campos com valores decimais, não limitei as casas decimais pois como não conheço a regra de negócio, pode ser necessária essa precisão dos valores
 
-### Executando o pipeline
+## Executando o pipeline:
 
 Necessário ter Docker instalado para automatizar o processo , porém arquivos com comandos SQL estão salvos no respositório caso necessário realizar manualmente
 
@@ -86,57 +89,3 @@ Dentro da pasta clonada, abrir o terminal e digitar o comando:
 ```
 docker-compose up -d
 ```
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
