@@ -80,14 +80,32 @@ Em campos com valores decimais, não limitei as casas decimais pois como não co
 
 ## Executando o pipeline:
 
-Necessário ter Docker instalado para automatizar o processo , porém arquivos com comandos SQL estão salvos no respositório caso necessário realizar manualmente
+### Necessário ter Docker instalado para automatizar o processo , porém arquivos com comandos SQL estão salvos no respositório caso necessário realizar manualmente
 
-Realizar Git Clone do repositório
+ - Realizar Git Clone do repositório
 
-Dentro da pasta clonada, abrir o terminal e digitar o comando: 
+ - Dentro da pasta clonada, abrir o terminal e digitar o comando: 
 
 ```
 docker-compose up
 ```
-docker cp mysql-connector-java-8.0.22.jar jupyter:/usr/local/spark/jars
+ - Os containeres do Jupyter Lab e MySQL devem iniciar corretamente.
+
+ - Após a inicialização de ambos, executar a linha a seguir no terminal, necessário para realizar a ingestão dos Dados no BD: 
+
+```
+docker cp mysql-connector-java-8.0.22.jar <JUPYTER_CONTAINER_ID>:/usr/local/spark/jars
+
+```
+ - Para executar o tratamento de dados, basta entrar no Jupyter Lab utilizando a URL: http://127.0.0.1:8888 e os arquivos estarão na pasta "Arquivos_Projeto"
+   Obs: Caso necessário de Token p/ acesso, o token estará no primeiro terminal executado.
+
+ - Executar os comandos SQL do arquivo "Yandeh.sql" antes de executar o Pipeline.
+ 
+ ## Creio que grande parte dos requisitos pedidos estejam dentro do repositório, porém se precisarem de mais informações ou de ajuda em algum passo, podem mandar um email p/:   vm.vmachado42@gmail.com
+ 
+Desde já, agradeço. 
+
+Vinicius Machado
+
 
