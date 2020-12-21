@@ -1,36 +1,91 @@
 # Yandeh - Projeto Engenharia de dados
 
-Projeto de Engenharia com o
+Projeto de Engenharia com o intuito de realizar a modelagem e ingestão dos dados enviados utilizando PySpark, MySQL e Docker
 
-## Getting Started
+## Modelagem
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Dividida em 3 entidades: 
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+ - cotacao_Preco
+ - lista_Materiais
+ - espec_Componente
+ 
+Segue Schema das tabelas a seguir :
 
 ```
-Give the example
+ cotacao_Preco
+ |-- bico_injetor_id: string 
+ |-- fornecedor: string 
+ |-- data_cotacao: date 
+ |-- uso_anual: integer
+ |-- qtde_min_pedido: integer 
+ |-- desconto_qtde: bit
+ |-- quanitdade: integer
+ |-- custo: float 
+```
+```
+lista_Material 
+ |-- bico_injetor_id: string 
+ |-- componente_id_1: string 
+ |-- quantidade_1: integer
+ |-- componente_id_2: string 
+ |-- quantidade_2: integer 
+ |-- componente_id_3: string 
+ |-- quantidade_3: integer 
+ |-- componente_id_4: string 
+ |-- quantidade_4: integer 
+ |-- componente_id_5: string 
+ |-- quantidade_5: integer 
+ |-- componente_id_6: string 
+ |-- quantidade_6: integer 
+ |-- componente_id_7: string 
+ |-- quantidade_7: integer
+ |-- componente_id_8: string
+ |-- quantidade_8: integer 
 ```
 
-And repeat
+```
+espec_Componente
+ |-- componente_id: string 
+ |-- componente_tipo_id: string 
+ |-- tipo: string 
+ |-- conexao_tipo_id: string 
+ |-- forma: string 
+ |-- tipo_base: string 
+ |-- distancia_base: float 
+ |-- compr_padrao_parafuso: float 
+ |-- larg_padrao_parafuso: float 
+ |-- sulco: bit 
+ |-- diametro_base: float 
+ |-- diametro_borda: float 
+ |-- especificidade: bit
+ |-- orientatacao: bit 
+ |-- peso: float 
+```
+Foi utilizado MySQL como Banco de Dados
+Modelagem e relacionamentos estão descritos no arquivo "Modelagem_DB.png" dentro do repositório
+ 
+### Arquitetura
+
+Foi utilizado Pyspark junto com Pandas para realizar a leitura e transformação dos dados, com o Pandas servindo apenas como forma de melhor
+visualização dos dados e o PySpark realizanndo as transformações necessárias e Docker no momento de conteinerização do BD
+
+Transformações realizadas: 
+Transformar os dados para seus tipos corretos.
+Substituir valores "NA" por Nulos
+Em campos que aceitavam como resposta "Sim" e "Não", realizei a transformações dos mesmos em Bit (0 == Não, 1 == Sim).
+
+### Executando o pipeline
+
+Necessário ter Docker instalado para automatizar o processo , porém arquivos com comandos SQL estão salvos no respositório caso necessário realizar manualmente
+
+Realizar Git Clone do repositório
+
+Dentro da pasta clonada, abrir o terminal e digitar o comando: 
 
 ```
-until finished
+docker-compose up -d
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
