@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mysqlserver:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "senha!"
+      MYSQL_DATABASE: "Yandeh"
+    ports:
+      - "3307:3306"
+    networks:
+      - mt-network
+
+  jupyter: 
+    image: jupyter/pyspark-notebook
+    volumes:
+      - .:/home/jovyan
+    ports: 
+      - "8888:8888"
+    depends_on:
+      - mysqlserver
+    networks:
+      - mt-network
+networks:
+  mt-network:
+    driver: bridge
