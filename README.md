@@ -87,5 +87,7 @@ Realizar Git Clone do repositório
 Dentro da pasta clonada, abrir o terminal e digitar o comando: 
 
 ```
-docker-compose up -d
+docker-compose up
 ```
+docker cp mysql-connector-java-8.0.22.jar jupyter:/usr/local/spark/jars
+
